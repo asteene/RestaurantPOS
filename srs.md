@@ -8,7 +8,7 @@ Fill the document out following the guidelines listed in each section. Maintain 
 
 * [Alec](mmailto:asteene@uncc.edu)
 * [Jack](mmailto:jdougl39@uncc.edu)
-* [Name](mmailto:email@uncc.edu)
+* [Nick](mmailto:nmatherl@uncc.edu)
 * [Name](mmailto:email@uncc.edu)
 
 ## Revisions
@@ -21,12 +21,16 @@ When a change is made to the document, a new revision should be created. The rev
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Requirements](#requirements)
-3. [Constraints](#constraints)
-4. [Use Cases](#use-cases)
-5. [User Stories](#user-stories)
-6. [Glossary](#glossary)
+- [Software Requirements Specification Document](#software-requirements-specification-document)
+  - [Group Members](#group-members)
+  - [Revisions](#revisions)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Requirements](#requirements)
+  - [Constraints](#constraints)
+  - [Use Cases](#use-cases)
+  - [User Stories](#user-stories)
+  - [Glossary](#glossary)
 
 ## Introduction
 
@@ -36,14 +40,46 @@ In this section, you should give a brief overview of what your project will be. 
 
 Each group member must supply at least three functional requirements for the project. Each requirement should be written in the following format:
 
+REQ-1: the user should be able to create orders.
+    description: the user should be able to put multiple food items into an order, the the order gets created when the user is finished adding items
+    type: functional
+    priority: 1
+    rationale: the user needs to be able to create orders in order for the kitchen to complete them
+    testing: we could test this by showing the contents of the completed order once the order is completed
+REQ-2: the orders should get stored in a database
+    description: once the orders are completed, they should get stored in a database so they can get acessed lated when needed
+    type: functional
+    priority: 1
+    rationale: the kitchen should be able to access the orders so they can fulfill them
+    testing: we could show a list of completed orders whenever a new order is completed
+REQ-3: be able to make changes to completed orders
+    description: once the orders are completed, a user should be able to change the order in case a mistake is made
+    type: functional
+    priority: 2
+    rationale: in case a customer changes their mind, or a user makes a mistake, the completed orders need to be changable
+    testing: we could create an order, then change it to see if the corresponding order on the order list is changed.
+- **REQ-4:**
+  - **Description:** There should be an interface that shows the layout of the dining room, where employees can select a table to open up the table's active tab or open up a blank tab if one is not already open for the table
+  - **Type:** Functioal
+  - **Priority:** 2
+  - **Rationale:** The employees should be able to easily access the tabs for their tables. Displaying it this way could easily help keep track of the 'ole "what goes where" conundrum
+  - **Testing:** We can interact with each table set up, with or without a tab currently set up, and see if the current tab is displayed properly/a blank one is set up. We need to make sure that the tab created is properly stored in the database and accessed 
+- **REQ-5:**
+  - **Description:** The system should keep track of the total number of tickets made that day
+  - **Type:** Functional
+  - **Priority:** 4
+  - **Rationale:** The managers and people using the system to decide staffing could use this information to better determine how many servers are needed.
+  - **Testing:** We create and close out different sets of tickets and verify that the "total" number output matches the number created
+- **REQ-6:**
+  - **Description:** The system should keep track of when an employee arrives to work (clocks in) and when they end their shift (clocks out)
+  - **Type:** Functional
+  - **Priority:** 3
+  - **Rationale:** The restaraunt needs to know the time an employee works in order to properly compensate them
+  - **Testing:** We can have a number of employees clock in and ensure that the time on shift is being displayed propeerly
+
+
 * **ID:** A unique identifier for the requirement. This should be a number that is unique across the entire document (something like REQ-1, REQ-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Description:** A short description of the requirement. This should be a single sentence that describes the requirement. Do not replace the word `Description` with the actual description. Put the description in the space where these instructions are written. Maintain that practice for all future sections.
-  * **Type:** The type of requirement. Should be either `Functional` or `Non-Functional`.
-  * **Priority:** The priority of the requirement. This should be a number between 1 and 5, with 1 being the highest priority and 5 being the lowest priority.
-  * **Rationale:** A short description of why the requirement is important. This should be a single sentence that describes why the requirement is important.
-  * **Testing:** A short description of how the requirement can be tested. This should be a single sentence that describes how the requirement can be tested.
-* **ID:** A unique identifier for the requirement. This should be a number that is unique across the entire document (something like REQ-1, REQ-2, etc. but be sure to replace the word `ID` with the unique identifier).
-  * **Description:** A short description of the requirement. This should be a single sentence that describes the requirement.
   * **Type:** The type of requirement. Should be either `Functional` or `Non-Functional`.
   * **Priority:** The priority of the requirement. This should be a number between 1 and 5, with 1 being the highest priority and 5 being the lowest priority.
   * **Rationale:** A short description of why the requirement is important. This should be a single sentence that describes why the requirement is important.
@@ -52,6 +88,11 @@ Each group member must supply at least three functional requirements for the pro
 ## Constraints
 
 In this section, you should list any constraints that you have for the project. Each group member must supply at least two constraints. These can be constraints on the project itself, the software system, or the stakeholders. Constraints can be anything that limits the scope of the project. For example, that this project's template code is written using Flask and Python constitutes a constraint on the backend of the project. Constraints can also be things like the required timeline of the project. Be creative.
+
+CONST-1: user should only be able to create orders if they have a server account
+CONST-2: only users with proper permissions should be able to view sales and user data
+**CONST-3**: the software should be able to run on a simple, inexpensive computer or tablet
+**CONST-4**: the software must be produced before the end of the semester
 
 ## Use Cases
 
@@ -63,6 +104,22 @@ In this section, you should list use cases for the project. Use cases are a thor
   * **Preconditions:** A list of the preconditions for the use case. This should be a list of the preconditions for the use case, which are the conditions that must be met before the use case can be executed. Continuing with the restaurant example, the customer must have money in their wallet and the cashier must be logged in to the system before the use case of ordering food can be executed.
   * **Postconditions:** A list of the postconditions for the use case. This should be a list of the postconditions for the use case, which are the conditions that must be met after the use case has been executed. Continuing with the restaurant example, the customer must have their food and the cashier must have the customer's money after the use case of ordering food has been executed.
 
+* **UC-1:**
+  * **Description:** The employee will use the system to clock in and out for their shift
+  * **Actors:** Employee
+  * **Preconditions:**
+    * Employee with a setup account
+    * An interface to clock in
+    * An interface to clock out
+  * **Postconditions:**
+    * The time needs to be accurately computed and stored so that the employee can receive pay
+
+* **UC-2:**
+  * **Description:** A manager will use the system to see sales for the day, displayed with information on hows much of each item is sold
+  * **Actors:** Manager
+  * **Preconditions:** A manager account set up, tickets being created properly, tickets beign closed out with their information being recorded, number of a certain item sold being increased as tickets are closed out, an interface to display the items sold
+  * **Postconditions:** Manager has access to the sales for specific days and how many items were sold
+
 ## User Stories
 
 In this section, you should list user stories for the project. User stories are a short description of how a user will be interacting with the system. Each group member must supply at least two user stories. Each user story should be written in the following format:
@@ -70,6 +127,12 @@ In this section, you should list user stories for the project. User stories are 
 * **ID:** A unique identifier for the user story. This should be a number that is unique across the entire document (something like US-1, US-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Type of User:** The type of user that the user story is for. This should be a single word that describes the type of user. For example, a user story for a customer might be `Customer` and a user story for an administrator might be `Admin`.
   * **Description:** A description of the user story that gives a narrative from that user's perspective. This can be any length, but it must paint the picture of what the user wants to do, how they intend to do it, why they want to, and what they expect to happen.
+* **US-Alpha:**
+  * **Type of User:** `Server`
+  * **Description:** A server comes in for their shift at _le restaraunt_, opens the work computer, accesses the system, and clocks in. Once customers come in and are seated by a `Hostess`, the `Server` will visit and take their drink orders. After this, they will go to the computer/tablet with access to the system, sign in with their credentials, click on the corresponding table on the restaraunt model, and add their drinks to the tab. After this, they will do the same process for the customer's food orders. At the end of the meal, the server will "print out" a ticket for the customer, and use the POS to collect payment and tip. At the end of their shift, they will use the POS to clock out.
+* **US-Beta**
+  * **Type of User:** `Hostess`
+  * **Description:** Hostess will use the POS to clock in. When a customer comes in, a hostess will sign in with their credentials, view open tables on the POS, and determine where to seat the customers. They will also use the POS to clock out at the end of their shift.
 
 ## Glossary
 
@@ -77,3 +140,7 @@ In this section, you should list any terms that are used in the document that ma
 
 * **Term:** The term that is being defined. This should be a single word or phrase that is being defined.
   * **Definition:** A definition of the term. This should be a short description of the term that is being defined. This should be a single sentence that describes the term.
+
+* **Term:** POS
+  * **Definition** Acronym for Point Of Sale, a system that facilitates the sale of goods and collecting of compensation
+* **Term:**
