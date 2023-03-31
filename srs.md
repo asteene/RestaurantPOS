@@ -54,7 +54,18 @@ REQ-3: be able to make changes to completed orders
     priority: 2
     rationale: in case a customer changes their mind, or a user makes a mistake, the completed orders need to be changable
     testing: we could create an order, then change it to see if the corresponding order on the order list is changed.
-REQ-4 : 
+REQ-4 : track sales and customer data
+    description: keep a record of sales data that can be put into a report that would help a user make business decisions
+    type: functional
+    rationale: a user would be able to make business decisions based on this data, so it would be useful to track and report.
+REQ-5: manager login with increased authorization
+    description: allow for two different types of accounts, with different levels of authorization
+    type: functional
+    rationale: only managers should have the authorization to perform certain tasks, such as take items of an order after it has ben placed, and create accounts for new users.
+REQ-6: print receipt to .txt file
+    description: similate printing a receipt to a printer by printing an itemized reciept to a .txt file
+    type: functional
+    rationale: there needs to be a physical record of purchases, so the software should be able to provide that 
 
 
 * **ID:** A unique identifier for the requirement. This should be a number that is unique across the entire document (something like REQ-1, REQ-2, etc. but be sure to replace the word `ID` with the unique identifier).
