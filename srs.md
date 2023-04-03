@@ -115,6 +115,13 @@ UC-2:
 
 In this section, you should list user stories for the project. User stories are a short description of how a user will be interacting with the system. Each group member must supply at least two user stories. Each user story should be written in the following format:
 
+US-1:
+  Type: Manager/Admin
+  Description: Create accounts, give account manager authorization, take items off of check, authorize discounts, plus all lower level permissions.
+US-2:
+  Type: Wait Staff level account
+  Description: Open tab, accept payment, close tab, add to tab, assign tab to table, make notes on the tab, submit order ticket.
+
 * **ID:** A unique identifier for the user story. This should be a number that is unique across the entire document (something like US-1, US-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Type of User:** The type of user that the user story is for. This should be a single word that describes the type of user. For example, a user story for a customer might be `Customer` and a user story for an administrator might be `Admin`.
   * **Description:** A description of the user story that gives a narrative from that user's perspective. This can be any length, but it must paint the picture of what the user wants to do, how they intend to do it, why they want to, and what they expect to happen.
