@@ -94,6 +94,17 @@ CONST-2:
 
 In this section, you should list use cases for the project. Use cases are a thorough description of how the system will be used. Each group member must supply at least two use cases. Each use case should be written in the following format:
 
+UC-1:
+    Description: A system that allows a restaurant to manage customer sales.
+    Actors: Server, Customer
+    Preconditions: The customer must be in the brick and mortar store with money and place an order(s), and the server/cashier at the restaurant must take the order.
+    Postconditions: The restaurant gets paid and the customer gets their food. 
+UC-2:
+    Description: A system that allows someone to place an order at a restaurant.
+    Actors: Customer
+    Preconditions: Customer has money and wants to place an order.
+    Postconditions: Customer gets food and restaurant gets paid.
+
 * **ID:** A unique identifier for the use case. This should be a number that is unique across the entire document (something like UC-1, UC-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Description:** A description of the use case that gives the user a high-level overview of how the system is interacted with.
   * **Actors:** A list of the actors that are involved in the use case. Only include the actors that are directly involved. Actors are the people or things that interact with the system. For example, when ordering at a fast food restaurant, one might have the following actors: the customer, the cashier, and the cook. But only the customer and the cashier are directly involved in the use case of ordering food. The cook is not directly involved in the use case of ordering food.
