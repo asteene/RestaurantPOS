@@ -85,6 +85,11 @@ REQ-6: print receipt to .txt file
 
 In this section, you should list any constraints that you have for the project. Each group member must supply at least two constraints. These can be constraints on the project itself, the software system, or the stakeholders. Constraints can be anything that limits the scope of the project. For example, that this project's template code is written using Flask and Python constitutes a constraint on the backend of the project. Constraints can also be things like the required timeline of the project. Be creative.
 
+CONST-1:
+    All functions written by all team members must have proper documentation strings and commenting in order to ensure readability by all team members.
+CONST-2:
+    The Database must be organized in terms of the table. A check must be attributed to a table, which a user can then access the table to open a check on that table, and close the check on that table. Additionally, only one check can be open on one table. 
+
 ## Use Cases
 
 In this section, you should list use cases for the project. Use cases are a thorough description of how the system will be used. Each group member must supply at least two use cases. Each use case should be written in the following format:
