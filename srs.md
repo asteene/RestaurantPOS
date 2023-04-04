@@ -116,7 +116,7 @@ UC-2:
 In this section, you should list user stories for the project. User stories are a short description of how a user will be interacting with the system. Each group member must supply at least two user stories. Each user story should be written in the following format:
 
 US-1:
-  Type: Manager/Admin
+  Type: Manager/Admin account
   Description: Create accounts, give account manager authorization, take items off of check, authorize discounts, plus all lower level permissions.
 US-2:
   Type: Wait Staff level account
