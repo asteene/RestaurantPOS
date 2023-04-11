@@ -404,7 +404,7 @@ class Database:
     # ------------------ Sales -------------------
     # --------------------------------------------
 
-    def insert_new_sale(self, transaction_id: int, username: str, item_id: int, quantity: int, sale_date: dt.date, cost: float):
+    def insert_new_sale(self, transaction_id: int, username: str, item_id: int, quantity: int, sale_date: dt.date, cost: float, table: int):
         """
         Inserts a new sale into the database.
 
@@ -415,12 +415,13 @@ class Database:
             - quantity: The quantity of the sale.
             - sale_date: The sale date of the sale.
             - cost: The cost of the sale.
+            - table: The location of the sale.
 
         returns:
             - None
         """
         self.cursor.execute(
-            "INSERT INTO sales (transaction_id, username, item_id, quantity, sale_date, cost) VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO sales (transaction_id, username, item_id, quantity, sale_date, cost, table) VALUES (?, ?, ?, ?, ?, ?, ?)",
             (transaction_id, username, item_id, quantity, sale_date, cost))
         self.connection.commit()
 
@@ -622,6 +623,18 @@ class Database:
         """
         self.cursor.execute(
             "SELECT * FROM sales WHERE cost BETWEEN ? AND ?", (start_cost, end_cost))
+        return self.cursor.fetchall()
+    
+    def get_sales_by_location(self, table: int) -> tuple:
+        """
+        Gets the sales at a certain location from the databse.
+
+        args:
+            - table: The location of the sale.
+        """
+        self.cursor.execute(
+            "SELECT * FROM sales WHERE table = ?", (table)
+        )
         return self.cursor.fetchall()
 
     # ------ Setter methods ------

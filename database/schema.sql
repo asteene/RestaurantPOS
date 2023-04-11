@@ -24,6 +24,7 @@ CREATE TABLE sales (
     quantity INTEGER NOT NULL,
     sale_date DATETIME NOT NULL,
     cost DECIMAL(10,2) NOT NULL,
+    table_number INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (username) REFERENCES users(username),
     FOREIGN KEY (item_id) REFERENCES inventory(id)
 );
