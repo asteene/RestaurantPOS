@@ -250,7 +250,7 @@ class Database:
     # ------------------ Users -------------------
     # --------------------------------------------
 
-    def insert_user(self, username: str, password_hash: str, email: str, first_name: str, last_name: str) -> None:
+    def insert_user(self, username: str, password_hash: str, email: str, first_name: str, last_name: str, admin: bool) -> None:
         """
         Inserts a new user into the database.
 
@@ -258,16 +258,31 @@ class Database:
             - username: The username of the user to insert.
             - password_hash: The password_hash of the user to insert.
             - email: The email of the user to insert.
+            - admin: The status of the User account as admin or not.
 
         returns:
             - None
         """
+
+        # convert admin to 0 or 1 to match database
+        admin_bit = 1 if admin else 0
+
         self.cursor.execute(
-            "INSERT INTO users (username, password_hash, email, first_name, last_name) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO users (username, password_hash, email, first_name, last_name, admin_bit) VALUES (?, ?, ?, ?, ?, ?)",
             (username, password_hash, email, first_name, last_name))
         self.connection.commit()
 
     # ------ Getter methods ------
+
+    def get_admin_auth(self, username: str) -> bool:
+        """
+        Gets the admin status of the User.
+
+        args:
+            - None
+        """
+        self.cursor.execute("SELECT * FROM users WHERE username = ?", (username))
+        return True if self.cursor.fetchone() == 1 else False
 
     def get_all_user_information(self):
         """
