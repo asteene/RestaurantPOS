@@ -8,7 +8,7 @@ Fill the document out following the guidelines listed in each section. Maintain 
 
 * [Alec](mmailto:asteene@uncc.edu)
 * [Jack](mmailto:jdougl39@uncc.edu)
-* [Name](mmailto:email@uncc.edu)
+* [Nick](mmailto:nmatherl@uncc.edu)
 * [Name](mmailto:email@uncc.edu)
 
 ## Revisions
@@ -21,12 +21,16 @@ When a change is made to the document, a new revision should be created. The rev
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Requirements](#requirements)
-3. [Constraints](#constraints)
-4. [Use Cases](#use-cases)
-5. [User Stories](#user-stories)
-6. [Glossary](#glossary)
+- [Software Requirements Specification Document](#software-requirements-specification-document)
+  - [Group Members](#group-members)
+  - [Revisions](#revisions)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Requirements](#requirements)
+  - [Constraints](#constraints)
+  - [Use Cases](#use-cases)
+  - [User Stories](#user-stories)
+  - [Glossary](#glossary)
 
 ## Introduction
 
@@ -54,18 +58,6 @@ REQ-3: be able to make changes to completed orders
     priority: 2
     rationale: in case a customer changes their mind, or a user makes a mistake, the completed orders need to be changable
     testing: we could create an order, then change it to see if the corresponding order on the order list is changed.
-REQ-4 : track sales and customer data
-    description: keep a record of sales data that can be put into a report that would help a user make business decisions
-    type: functional
-    rationale: a user would be able to make business decisions based on this data, so it would be useful to track and report.
-REQ-5: manager login with increased authorization
-    description: allow for two different types of accounts, with different levels of authorization
-    type: functional
-    rationale: only managers should have the authorization to perform certain tasks, such as take items of an order after it has ben placed, and create accounts for new users.
-REQ-6: print receipt to .txt file
-    description: similate printing a receipt to a printer by printing an itemized reciept to a .txt file
-    type: functional
-    rationale: there needs to be a physical record of purchases, so the software should be able to provide that 
 
 
 * **ID:** A unique identifier for the requirement. This should be a number that is unique across the entire document (something like REQ-1, REQ-2, etc. but be sure to replace the word `ID` with the unique identifier).
@@ -84,6 +76,14 @@ REQ-6: print receipt to .txt file
 ## Constraints
 
 In this section, you should list any constraints that you have for the project. Each group member must supply at least two constraints. These can be constraints on the project itself, the software system, or the stakeholders. Constraints can be anything that limits the scope of the project. For example, that this project's template code is written using Flask and Python constitutes a constraint on the backend of the project. Constraints can also be things like the required timeline of the project. Be creative.
+- CONST-1: user should only be able to create orders if they have a server account
+- CONST-2: only users with proper permissions should be able to view sales and user data
+- CONST-3:
+    All functions written by all team members must have proper documentation strings and commenting in order to ensure readability by all team members.
+- CONST-4:
+    The Database must be organized in terms of the table. A check must be attributed to a table, which a user can then access the table to open a check on that table, and close the check on that table. Additionally, only one check can be open on one table. 
+- **CONST-5**: the software should be able to run on a simple, inexpensive computer or tablet
+- **CONST-6**: the software must be produced before the end of the semester
 
 CONST-1:
     All functions written by all team members must have proper documentation strings and commenting in order to ensure readability by all team members.
@@ -93,17 +93,6 @@ CONST-2:
 ## Use Cases
 
 In this section, you should list use cases for the project. Use cases are a thorough description of how the system will be used. Each group member must supply at least two use cases. Each use case should be written in the following format:
-
-UC-1:
-    Description: A system that allows a restaurant to manage customer sales.
-    Actors: Server, Customer
-    Preconditions: The customer must be in the brick and mortar store with money and place an order(s), and the server/cashier at the restaurant must take the order.
-    Postconditions: The restaurant gets paid and the customer gets their food. 
-UC-2:
-    Description: A system that allows someone to place an order at a restaurant.
-    Actors: Customer
-    Preconditions: Customer has money and wants to place an order.
-    Postconditions: Customer gets food and restaurant gets paid.
 
 * **ID:** A unique identifier for the use case. This should be a number that is unique across the entire document (something like UC-1, UC-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Description:** A description of the use case that gives the user a high-level overview of how the system is interacted with.
@@ -115,13 +104,6 @@ UC-2:
 
 In this section, you should list user stories for the project. User stories are a short description of how a user will be interacting with the system. Each group member must supply at least two user stories. Each user story should be written in the following format:
 
-US-1:
-  Type: Manager/Admin account
-  Description: Create accounts, give account manager authorization, take items off of check, authorize discounts, plus all lower level permissions.
-US-2:
-  Type: Wait Staff level account
-  Description: Open tab, accept payment, close tab, add to tab, assign tab to table, make notes on the tab, submit order ticket.
-
 * **ID:** A unique identifier for the user story. This should be a number that is unique across the entire document (something like US-1, US-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Type of User:** The type of user that the user story is for. This should be a single word that describes the type of user. For example, a user story for a customer might be `Customer` and a user story for an administrator might be `Admin`.
   * **Description:** A description of the user story that gives a narrative from that user's perspective. This can be any length, but it must paint the picture of what the user wants to do, how they intend to do it, why they want to, and what they expect to happen.
@@ -132,3 +114,7 @@ In this section, you should list any terms that are used in the document that ma
 
 * **Term:** The term that is being defined. This should be a single word or phrase that is being defined.
   * **Definition:** A definition of the term. This should be a short description of the term that is being defined. This should be a single sentence that describes the term.
+  * 
+* **Term:** POS
+  * **Definition** Acronym for Point Of Sale, a system that facilitates the sale of goods and collecting of compensation
+* **Term:**
