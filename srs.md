@@ -90,6 +90,10 @@ REQ-6: print receipt to .txt file
 In this section, you should list any constraints that you have for the project. Each group member must supply at least two constraints. These can be constraints on the project itself, the software system, or the stakeholders. Constraints can be anything that limits the scope of the project. For example, that this project's template code is written using Flask and Python constitutes a constraint on the backend of the project. Constraints can also be things like the required timeline of the project. Be creative.
 CONST-1: user should only be able to create orders if they have a server account
 CONST-2: only users with proper permissions should be able to view sales and user data
+CONST-3:
+    All functions written by all team members must have proper documentation strings and commenting in order to ensure readability by all team members.
+CONST-4:
+    The Database must be organized in terms of the table. A check must be attributed to a table, which a user can then access the table to open a check on that table, and close the check on that table. Additionally, only one check can be open on one table. 
 
 ## Use Cases
 
@@ -105,6 +109,16 @@ UC-2: create sales data for the owner to look at
     actors: the owner of the store
     preconditions: the number of each item sold during the day will need to be tracked and put into a database
     postconditions: the database will be printed onto a page that only the manager can access
+UC-3:
+    Description: A system that allows a restaurant to manage customer sales.
+    Actors: Server, Customer
+    Preconditions: The customer must be in the brick and mortar store with money and place an order(s), and the server/cashier at the restaurant must take the order.
+    Postconditions: The restaurant gets paid and the customer gets their food. 
+UC-4:
+    Description: A system that allows someone to place an order at a restaurant.
+    Actors: Customer
+    Preconditions: Customer has money and wants to place an order.
+    Postconditions: Customer gets food and restaurant gets paid.
 
 * **ID:** A unique identifier for the use case. This should be a number that is unique across the entire document (something like UC-1, UC-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Description:** A description of the use case that gives the user a high-level overview of how the system is interacted with.
@@ -122,6 +136,12 @@ US-1:
 US-2:
     type of user: manager
     description: the manager will log on to his admin account to make changes to orders, he can also access the sales and customer data, he can use this information to pay taxes and see what items are the most popular.
+US-3:
+  Type: Manager/Admin account
+  Description: Create accounts, give account manager authorization, take items off of check, authorize discounts, plus all lower level permissions.
+US-4:
+  Type: Wait Staff level account
+  Description: Open tab, accept payment, close tab, add to tab, assign tab to table, make notes on the tab, submit order ticket.
 
 * **ID:** A unique identifier for the user story. This should be a number that is unique across the entire document (something like US-1, US-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Type of User:** The type of user that the user story is for. This should be a single word that describes the type of user. For example, a user story for a customer might be `Customer` and a user story for an administrator might be `Admin`.
