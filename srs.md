@@ -66,7 +66,7 @@ Each group member must supply at least three functional requirements for the pro
     **description**: allow for two different types of accounts, with different levels of authorization
     **type**: functional
     **rationale**: only managers should have the authorization to perform certain tasks, such as take items of an order after it has ben placed, and create accounts for new users.
--**REQ-6**: print receipt to .txt file
+- **REQ-6**: print receipt to .txt file
     **description**: similate printing a receipt to a printer by printing an itemized reciept to a .txt file
     **type**: functional
     **rationale**: there needs to be a physical record of purchases, so the software should be able to provide that 
