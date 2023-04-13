@@ -60,8 +60,11 @@ def login():
     """
     username = request.form['username']
     password = request.form['password']
+    manager = False
+    if(username == "admin"):
+        manager = True
     if login_pipeline(username, password):
-        sessions.add_new_session(username, db)
+        sessions.add_new_session(username, db, manager)
         return render_template('home.html', products=products, sessions=sessions)
     else:
         print(f"Incorrect username ({username}) or password ({password}).")
