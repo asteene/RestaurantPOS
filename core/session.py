@@ -26,7 +26,7 @@ class UserSession:
         self.db = db
         self.carts = {}
 
-    def add_cart(self, table_number):
+    def add_cart(self, table_number: int):
         '''
         Checks if there is an open check at a location, if not, opens a check at that location.
 
@@ -53,19 +53,20 @@ class UserSession:
                                     "discount": 0, "tax_rate": 0}
         return new_cart
 
-    def is_item_in_cart(self, id: str) -> bool:
+    def is_item_in_cart(self, id: str, table_number: int) -> bool:
         """
         Checks if an item is in the user's cart.
 
         args:
             - id: The id of the item.
+            - table_number: The location of the sale.
 
         returns:
             - True if the item is in the user's cart, False otherwise.
         """
-        return id in self.cart
+        return id in self.carts[f'{table_number}']
 
-    def add_new_item(self, id: str, name: str, price: int, quantity: int, discount: float = 0.0, tax_rate: float = 0.05) -> None:
+    def add_new_item(self, id: str, name: str, price: int, quantity: int,  table_number: int, discount: float = 0.0, tax_rate: float = 0.05) -> None:
         """
         Creates a new item to add to the user's cart.
 
@@ -76,40 +77,46 @@ class UserSession:
             - quantity: The quantity of the item.
             - discount: The discount of the item.
             - tax_rate: The tax rate of the item.
+            - table_number: The location of the sale.
 
         returns:
             - None
         """
-        self.cart[id] = {"name": name, "price": price, "quantity": quantity,
+        self.carts[f'{table_number}'][id] = {"name": name, "price": price, "quantity": quantity,
                          "discount": discount, "tax_rate": tax_rate}
 
-    def update_item_quantity(self, id: str, change_to_quantity: int) -> None:
+    def update_item_quantity(self, id: str, change_to_quantity: int, table_number: int) -> None:
         """
         Updates the quantity of an item in the user's cart.
 
         args:
             - id: The id of the item.
             - quantity: The quantity of the item.
+            - table_number: The location of the sale.
         """
-        if self.cart[id]["quantity"] + change_to_quantity <= 0:
+        if self.carts[f'{table_number}'][id]["quantity"] + change_to_quantity <= 0:
             self.remove_item(id)
         else:
-            self.cart[id]["quantity"] += change_to_quantity
+            self.carts[f'{table_number}'][id]["quantity"] += change_to_quantity
 
-    def remove_item(self, id: str) -> None:
+    def remove_item(self, id: str, table_number: int) -> None:
         """
         Removes an item from the user's cart.
 
         args:
             - id: The id of the item.
+            - table_number: The location of the sale.
         """
-        del self.cart[id]
+        del self.carts[f'{table_number}'][id]
 
-    def update_total_cost(self) -> None:
+    def update_total_cost(self, table_number: int) -> None:
         """
         Updates the total cost of the user's cart.
+
+        args:
+            - table_number: The location of the sale.
         """
-        self.total_cost = calculate_total_cost(self.cart)
+        self.total_cost = calculate_total_cost(self.cart, table_number)
 
     def submit_cart(self) -> None:
         """
