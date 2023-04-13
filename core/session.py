@@ -24,7 +24,17 @@ class UserSession:
         self.total_cost = 0
         self.date = None
         self.db = db
-        self.cart = self.empty_cart()
+        self.carts = {}
+
+    def add_cart(self, table_number):
+        '''
+        Checks if there is an open check at a location, if not, opens a check at that location.
+
+        args:
+            - table_number: the location of the sale
+        '''
+        if f'{table_number}' not in self.carts.keys():
+            self.carts[f'{table_number}']
 
     def empty_cart(self) -> dict:
         """
