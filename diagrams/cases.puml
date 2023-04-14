@@ -1,7 +1,7 @@
 @startuml
 
 usecase create_orders
-(Another view_sales) as (UC2)
+usecase (view_sales) as (UC2)
 usecase delete_orders
 usecase (manage_sales) as UC4
 
