@@ -136,9 +136,8 @@ def checkout():
             order[item['item_name']] = count
             user_session.add_new_item(
                 item['id'], item['item_name'], item['price'], count)
-
+    user_session.set_table_num(table_number)
     user_session.submit_cart()
-    ORDERS.append(order)
     return render_template('home.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
 
 
