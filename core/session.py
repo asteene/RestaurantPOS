@@ -119,17 +119,17 @@ class UserSession:
         """
         self.total_cost = calculate_total_cost(self.cart, table_number)
 
-    def submit_cart(self) -> None:
+    def submit_cart(self, table_number: int) -> None:
         """
         Called when the order is submitted. Finalizes user session details.
 
         args:
-            - None
+            - table_number: The location of the sale.
 
         returns:
             - None
         """
-        self.update_total_cost()
+        self.update_total_cost(table_number)
         self.date = datetime.now()
 
 
