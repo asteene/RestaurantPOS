@@ -1,0 +1,12 @@
+@startuml login
+actor manager
+boundary "System" as system
+control "Sessions" as sessions
+control "App" as app
+manager -> system: Login
+activate system
+system -> sessions: remove_item(self, id: str)
+system -> app: checkout()
+system -> system: redirect to home page
+deactivate system
+@enduml

@@ -19,8 +19,9 @@ class UserSession:
         - db: The database to use.
     """
 
-    def __init__(self, username: str, db: Database):
+    def __init__(self, username: str, db: Database, manager: bool):
         self.username = username
+        self.manager = manager
         self.total_cost = 0
         self.date = None
         self.db = db
@@ -129,7 +130,7 @@ class Sessions:
     def __init__(self):
         self.sessions = {}
 
-    def add_new_session(self, username: str, db: Database) -> None:
+    def add_new_session(self, username: str, db: Database, manager: bool) -> None:
         """
         Adds a new user session to the collection of sessions.
 
@@ -140,7 +141,7 @@ class Sessions:
         returns:
             - None
         """
-        self.sessions[username] = UserSession(username, db)
+        self.sessions[username] = UserSession(username, db, manager)
 
     def get_session(self, username: str) -> UserSession:
         """

@@ -1,0 +1,12 @@
+@startuml login
+actor server
+boundary "System" as system
+control "Sessions" as sessions
+control "App" as app
+server -> system: Login
+activate system
+system -> sessions: add_new_item(self, id: str, name: str, price: int, quantity: int, discount: float = 0.0, tax_rate: float = 0.05)
+system -> app: checkout()
+system -> system: redirect to home page
+deactivate system
+@enduml

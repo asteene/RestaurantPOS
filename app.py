@@ -13,6 +13,7 @@ db = Database('database/storeRecords.db')
 products = db.get_full_inventory()
 sessions = Sessions()
 sessions.add_new_session(username, db)
+ORDERS = {}
 
 
 @app.route('/')
@@ -60,8 +61,11 @@ def login():
     """
     username = request.form['username']
     password = request.form['password']
+    manager = False
+    if(username == "admin"):
+        manager = True
     if login_pipeline(username, password):
-        sessions.add_new_session(username, db)
+        sessions.add_new_session(username, db, manager)
         return render_template('home.html', products=products, sessions=sessions)
     else:
         print(f"Incorrect username ({username}) or password ({password}).")
@@ -127,14 +131,15 @@ def checkout():
     for item in products:
         print(f"item ID: {item['id']}")
         if request.form[str(item['id'])] > '0':
+            table_number = request.form['table'] 
             count = request.form[str(item['id'])]
             order[item['item_name']] = count
             user_session.add_new_item(
                 item['id'], item['item_name'], item['price'], count)
 
     user_session.submit_cart()
-
-    return render_template('checkout.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
+    ORDERS.append(order)
+    return render_template('home.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
 
 
 if __name__ == '__main__':

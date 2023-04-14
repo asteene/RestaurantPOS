@@ -1,0 +1,10 @@
+@startuml classes
+set namespaceSeparator none
+class authTools {
+    tuple hash_password(str password, str salt)
+    bool username_exists(str username)
+    void update_passwords(str username, str key, str salt)
+    bool check_password(str username, str key, str salt)
+    bool login_pipeline(str username, str password) 
+}
+@enduml
