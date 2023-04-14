@@ -35,7 +35,7 @@ class UserSession:
             - table_number: the location of the sale
         '''
         if f'{table_number}' not in self.carts.keys():
-            self.carts[f'{table_number}']
+            self.carts[f'{table_number}'] = self.empty_cart()
 
     def empty_cart(self) -> dict:
         """
