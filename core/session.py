@@ -19,7 +19,7 @@ class UserSession:
         - db: The database to use.
     """
 
-    def __init__(self, username: str, db: Database):
+    def __init__(self, username: str, db: Database, manager: bool):
         self.username = username
         self.total_cost = 0
         self.date = None
