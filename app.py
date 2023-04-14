@@ -12,7 +12,7 @@ username = 'default'
 db = Database('database/storeRecords.db')
 products = db.get_full_inventory()
 sessions = Sessions()
-sessions.add_new_session(username, db, False)
+sessions.add_new_session(username, db)
 ORDERS = {}
 
 
@@ -131,7 +131,7 @@ def checkout():
     for item in products:
         print(f"item ID: {item['id']}")
         if request.form[str(item['id'])] > '0':
-            table_number = request.form['table'] 
+            table_number = request.form['table_number'] 
             count = request.form[str(item['id'])]
             order[item['item_name']] = count
             user_session.add_new_item(
