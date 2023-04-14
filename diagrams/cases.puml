@@ -1,0 +1,15 @@
+@startuml
+
+usecase create_orders
+usecase (view_sales) as (UC2)
+usecase delete_orders
+usecase (manage_sales) as UC4
+
+actor server
+actor manager
+
+manager -> UC2
+server -> create_orders
+manager -> delete_orders
+manager -> UC4
+@enduml
