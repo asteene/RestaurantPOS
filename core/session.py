@@ -17,9 +17,11 @@ class UserSession:
         - total_cost: The total cost of the user's cart.
         - date: The date of the user's session.
         - db: The database to use.
+        - table_number: the location of the sale
     """
 
     def __init__(self, username: str, db: Database, manager: bool):
+        self.table_number = 0
         self.username = username
         self.manager = manager
         self.total_cost = 0
@@ -36,6 +38,15 @@ class UserSession:
         '''
         if f'{table_number}' not in self.carts.keys():
             self.carts[f'{table_number}'] = self.empty_cart()
+
+    def set_table_num(self, table_number):
+        '''
+        sets the table number of the session
+
+        args:
+            - table_number: the location
+        '''
+        self.table_number = table_number
 
     def empty_cart(self) -> dict:
         """

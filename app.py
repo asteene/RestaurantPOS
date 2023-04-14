@@ -12,7 +12,7 @@ username = 'default'
 db = Database('database/storeRecords.db')
 products = db.get_full_inventory()
 sessions = Sessions()
-sessions.add_new_session(username, db, False)
+sessions.add_new_session(username, db)
 ORDERS = {}
 
 
@@ -135,10 +135,9 @@ def checkout():
             count = request.form[str(item['id'])]
             order[item['item_name']] = count
             user_session.add_new_item(
-                item['id'], item['item_name'], item['price'], count, table_number)
-
-    user_session.submit_cart(table_number)
-    ORDERS.append(order)
+                item['id'], item['item_name'], item['price'], count)
+    user_session.set_table_num(table_number)
+    user_session.submit_cart()
     return render_template('home.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
 
 
