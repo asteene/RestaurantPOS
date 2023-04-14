@@ -131,6 +131,7 @@ def checkout():
     for item in products:
         print(f"item ID: {item['id']}")
         if request.form[str(item['id'])] > '0':
+            table_number = request.form['table'] 
             count = request.form[str(item['id'])]
             order[item['item_name']] = count
             user_session.add_new_item(
