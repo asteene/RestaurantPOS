@@ -5,8 +5,8 @@ usecase create_orders
 usecase delete_orders
 usecase (manage_sales) as UC4
 
-usecase server
-usecase manager
+actor server
+actor manager
 
 manager -> UC2
 server -> create_orders
