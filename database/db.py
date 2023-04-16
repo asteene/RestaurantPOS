@@ -654,6 +654,16 @@ class Database:
 
     # ------ Setter methods ------
 
+    def set_sale_location(self, sale_id: int, new_location: int) -> None:
+        '''
+        Updates the transaction location of the sale in the the database.
+
+        args:
+            - sale_id: The id of the sale to update.
+            - new_location: The new location of the sale.
+        '''
+        self.cursor.execute('UPDATE sales SET table_number = ? WHERE id = ?', (new_location, sale_id))
+
     def set_sale_transaction_id(self, sale_id: int, new_transaction_id: int):
         """
         Updates the transaction id of a sale in the database.
