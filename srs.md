@@ -8,7 +8,7 @@ Fill the document out following the guidelines listed in each section. Maintain 
 
 * [Alec](mmailto:asteene@uncc.edu)
 * [Jack](mmailto:jdougl39@uncc.edu)
-* [Nick](mmailto:nmatherl@uncc.edu)
+* [Name](mmailto:email@uncc.edu)
 * [Name](mmailto:email@uncc.edu)
 
 ## Revisions
@@ -21,16 +21,12 @@ When a change is made to the document, a new revision should be created. The rev
 
 ## Table of Contents
 
-- [Software Requirements Specification Document](#software-requirements-specification-document)
-  - [Group Members](#group-members)
-  - [Revisions](#revisions)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Requirements](#requirements)
-  - [Constraints](#constraints)
-  - [Use Cases](#use-cases)
-  - [User Stories](#user-stories)
-  - [Glossary](#glossary)
+1. [Introduction](#introduction)
+2. [Requirements](#requirements)
+3. [Constraints](#constraints)
+4. [Use Cases](#use-cases)
+5. [User Stories](#user-stories)
+6. [Glossary](#glossary)
 
 ## Introduction
 
@@ -40,24 +36,54 @@ In this section, you should give a brief overview of what your project will be. 
 
 Each group member must supply at least three functional requirements for the project. Each requirement should be written in the following format:
 
-REQ-1: the user should be able to create orders.
-    description: the user should be able to put multiple food items into an order, the the order gets created when the user is finished adding items
-    type: functional
-    priority: 1
-    rationale: the user needs to be able to create orders in order for the kitchen to complete them
-    testing: we could test this by showing the contents of the completed order once the order is completed
-REQ-2: the orders should get stored in a database
-    description: once the orders are completed, they should get stored in a database so they can get acessed lated when needed
-    type: functional
-    priority: 1
-    rationale: the kitchen should be able to access the orders so they can fulfill them
-    testing: we could show a list of completed orders whenever a new order is completed
-REQ-3: be able to make changes to completed orders
-    description: once the orders are completed, a user should be able to change the order in case a mistake is made
-    type: functional
-    priority: 2
-    rationale: in case a customer changes their mind, or a user makes a mistake, the completed orders need to be changable
-    testing: we could create an order, then change it to see if the corresponding order on the order list is changed.
+- **REQ-1**: the user should be able to create orders.
+    - **description**: the user should be able to put multiple food items into an order, the the order gets created when the user is finished adding items
+    - **type**: functional
+    - **priority**: 1
+    - **rationale**: the user needs to be able to create orders in order for the kitchen to complete them
+    - **testing**: we could test this by showing the contents of the completed order once the order is completed
+- **REQ-2**: the orders should get stored in a database
+    - **description**: once the orders are completed, they should get stored in a database so they can get acessed lated when needed
+    - **type**: functional
+    - **priority**: 1
+    - **rationale**: the kitchen should be able to access the orders so they can fulfill them
+    - **testing**: we could show a list of completed orders whenever a new order is completed
+- **REQ-3**: be able to make changes to completed orders
+    - **description**: once the orders are completed, a user should be able to change the order in case a mistake is made
+    - **type**: functional
+    - **priority**: 2
+    - **rationale**: in case a customer changes their mind, or a user makes a mistake, the completed orders need to be changable
+    - **testing**: we could create an order, then change it to see if the corresponding order on the order list is changed.
+- **REQ-4** : track sales and customer data
+    - **description**: keep a record of sales data that can be put into a report that would help a user make business decisions
+    - **type**: functional
+    - **rationale**: a user would be able to make business decisions based on this data, so it would be useful to track and report.
+- **REQ-5**: manager login with increased authorization
+    - **description**: allow for two different types of accounts, with different levels of authorization
+    - **type**: functional
+    - **rationale**: only managers should have the authorization to perform certain tasks, such as take items of an order after it has ben placed, and create accounts for new users.
+- **REQ-6**: print receipt to .txt file
+    - **description**: similate printing a receipt to a printer by printing an itemized reciept to a .txt file
+    - **type**: functional
+    - **rationale**: there needs to be a physical record of purchases, so the software should be able to provide that 
+- **REQ-7:**
+  - **Description:** There should be an interface that shows the layout of the dining room, where employees can select a table to open up the table's active tab or open up a blank tab if one is not already open for the table
+  - **Type:** Functioal
+  - **Priority:** 2
+  - **Rationale:** The employees should be able to easily access the tabs for their tables. Displaying it this way could easily help keep track of the 'ole "what goes where" conundrum
+  - **Testing:** We can interact with each table set up, with or without a tab currently set up, and see if the current tab is displayed properly/a blank one is set up. We need to make sure that the tab created is properly stored in the database and accessed 
+- **REQ-8:**
+  - **Description:** The system should keep track of the total number of tickets made that day
+  - **Type:** Functional
+  - **Priority:** 4
+  - **Rationale:** The managers and people using the system to decide staffing could use this information to better determine how many servers are needed.
+  - **Testing:** We create and close out different sets of tickets and verify that the "total" number output matches the number created
+- **REQ-9:**
+  - **Description:** The system should keep track of when an employee arrives to work (clocks in) and when they end their shift (clocks out)
+  - **Type:** Functional
+  - **Priority:** 3
+  - **Rationale:** The restaraunt needs to know the time an employee works in order to properly compensate them
+  - **Testing:** We can have a number of employees clock in and ensure that the time on shift is being displayed propeerly
 
 
 * **ID:** A unique identifier for the requirement. This should be a number that is unique across the entire document (something like REQ-1, REQ-2, etc. but be sure to replace the word `ID` with the unique identifier).
@@ -76,23 +102,59 @@ REQ-3: be able to make changes to completed orders
 ## Constraints
 
 In this section, you should list any constraints that you have for the project. Each group member must supply at least two constraints. These can be constraints on the project itself, the software system, or the stakeholders. Constraints can be anything that limits the scope of the project. For example, that this project's template code is written using Flask and Python constitutes a constraint on the backend of the project. Constraints can also be things like the required timeline of the project. Be creative.
-CONST-1: user should only be able to create orders if they have a server account
-CONST-2: only users with proper permissions should be able to view sales and user data
+- CONST-1: user should only be able to create orders if they have a server account
+- CONST-2: only users with proper permissions should be able to view sales and user data
+- CONST-3:
+    All functions written by all team members must have proper documentation strings and commenting in order to ensure readability by all team members.
+- CONST-4:
+    The Database must be organized in terms of the table. A check must be attributed to a table, which a user can then access the table to open a check on that table, and close the check on that table. Additionally, only one check can be open on one table. 
+- **CONST-5**: the software should be able to run on a simple, inexpensive computer or tablet
+- **CONST-6**: the software must be produced before the end of the semester
+
+CONST-1:
+    All functions written by all team members must have proper documentation strings and commenting in order to ensure readability by all team members.
+CONST-2:
+    The Database must be organized in terms of the table. A check must be attributed to a table, which a user can then access the table to open a check on that table, and close the check on that table. Additionally, only one check can be open on one table. 
 
 ## Use Cases
 
 In this section, you should list use cases for the project. Use cases are a thorough description of how the system will be used. Each group member must supply at least two use cases. Each use case should be written in the following format:
 
-UC-1: create and index orders for completion
-    description: the user will click on the food that will be added to the order, and then click complete order when the order is completed, it will then go back to the main screen where there is a create order button for each table, and a list of all current orders on the side
-    actors: servers, who will make the orders, and chefs, who will prepare the orders from the list
-    preconditions: code needs to have a button for each table, a way to create an order, and a list to the side of the tables with the orders on it.
-    postconditions: order must be listed on the side of the tables part of the software
-UC-2: create sales data for the owner to look at
-    description: the owner of the store will be able to look at sales data for the day, with a number of each item sold
-    actors: the owner of the store
-    preconditions: the number of each item sold during the day will need to be tracked and put into a database
-    postconditions: the database will be printed onto a page that only the manager can access
+- **UC-1**: create and index orders for completion
+    * **description**: the user will click on the food that will be added to the order, and then click complete order when the order is completed, it will then go back to the main screen where there is a create order button for each table, and a list of all current orders on the side
+    * **actors**: servers, who will make the orders, and chefs, who will prepare the orders from the list
+    * **preconditions**: code needs to have a button for each table, a way to create an order, and a list to the side of the tables with the orders on it.
+    * **postconditions**: order must be listed on the side of the tables part of the software
+- **UC-2**: create sales data for the owner to look at
+    * **description: the owner of the store will be able to look at sales data for the day, with a number of each item sold
+    * **actors: the owner of the store
+    * **preconditions: the number of each item sold during the day will need to be tracked and put into a database
+    * **postconditions: the database will be printed onto a page that only the manager can access
+- **UC-3**:
+    * **Description**: A system that allows a restaurant to manage customer sales.
+    * **Actors**: Server, Customer
+    * **Preconditions**: The customer must be in the brick and mortar store with money and place an order(s), and the server/cashier at the restaurant must take the order.
+    * **Postconditions**: The restaurant gets paid and the customer gets their food. 
+- **UC-4**:
+    * **Description**: A system that allows someone to place an order at a restaurant.
+    * **Actors**: Customer
+    * **Preconditions**: Customer has money and wants to place an order.
+    * **Postconditions**: Customer gets food and restaurant gets paid.
+* **UC-5:**
+  * **Description:** The employee will use the system to clock in and out for their shift
+  * **Actors:** Employee
+  * **Preconditions:**
+    * Employee with a setup account
+    * An interface to clock in
+    * An interface to clock out
+  * **Postconditions:**
+    * The time needs to be accurately computed and stored so that the employee can receive pay
+
+* **UC-6:**
+  * **Description:** A manager will use the system to see sales for the day, displayed with information on hows much of each item is sold
+  * **Actors:** Manager
+  * **Preconditions:** A manager account set up, tickets being created properly, tickets beign closed out with their information being recorded, number of a certain item sold being increased as tickets are closed out, an interface to display the items sold
+  * **Postconditions:** Manager has access to the sales for specific days and how many items were sold
 
 * **ID:** A unique identifier for the use case. This should be a number that is unique across the entire document (something like UC-1, UC-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Description:** A description of the use case that gives the user a high-level overview of how the system is interacted with.
@@ -104,12 +166,24 @@ UC-2: create sales data for the owner to look at
 
 In this section, you should list user stories for the project. User stories are a short description of how a user will be interacting with the system. Each group member must supply at least two user stories. Each user story should be written in the following format:
 
-US-1:
-    type of user: server
-    description: the server will click on the table that they are currently serving, and fill out the order that the customer wants, then clicks complete order
-US-2:
-    type of user: manager
-    description: the manager will log on to his admin account to make changes to orders, he can also access the sales and customer data, he can use this information to pay taxes and see what items are the most popular.
+- **US-1**:
+    * **type of user**: server
+    * **description**: the server will click on the table that they are currently serving, and fill out the order that the customer wants, then clicks complete order
+- **US-2**:
+    * **type of user**: manager
+    * **description**: the manager will log on to his admin account to make changes to orders, he can also access the sales and customer data, he can use this information to pay taxes and see what items are the most popular.
+-**US-3**:
+  **Type**: Manager/Admin account
+  **Description**: Create accounts, give account manager authorization, take items off of check, authorize discounts, plus all lower level permissions.
+- **US-4**:
+  * **Type**: Wait Staff level account
+  * **Description**: Open tab, accept payment, close tab, add to tab, assign tab to table, make notes on the tab, submit order ticke* 
+* **US-Alpha:**
+  * **Type of User:** `Server`
+  * **Description:** A server comes in for their shift at _le restaraunt_, opens the work computer, accesses the system, and clocks in. Once customers come in and are seated by a `Hostess`, the `Server` will visit and take their drink orders. After this, they will go to the computer/tablet with access to the system, sign in with their credentials, click on the corresponding table on the restaraunt model, and add their drinks to the tab. After this, they will do the same process for the customer's food orders. At the end of the meal, the server will "print out" a ticket for the customer, and use the POS to collect payment and tip. At the end of their shift, they will use the POS to clock out.
+* **US-Beta**
+  * **Type of User:** `Hostess`
+  * **Description:** Hostess will use the POS to clock in. When a customer comes in, a hostess will sign in with their credentials, view open tables on the POS, and determine where to seat the customers. They will also use the POS to clock out at the end of their shift.
 
 * **ID:** A unique identifier for the user story. This should be a number that is unique across the entire document (something like US-1, US-2, etc. but be sure to replace the word `ID` with the unique identifier).
   * **Type of User:** The type of user that the user story is for. This should be a single word that describes the type of user. For example, a user story for a customer might be `Customer` and a user story for an administrator might be `Admin`.
@@ -121,3 +195,7 @@ In this section, you should list any terms that are used in the document that ma
 
 * **Term:** The term that is being defined. This should be a single word or phrase that is being defined.
   * **Definition:** A definition of the term. This should be a short description of the term that is being defined. This should be a single sentence that describes the term.
+  * 
+* **Term:** POS
+  * **Definition** Acronym for Point Of Sale, a system that facilitates the sale of goods and collecting of compensation
+* **Term:**

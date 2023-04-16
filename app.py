@@ -12,7 +12,7 @@ username = 'default'
 db = Database('database/storeRecords.db')
 products = db.get_full_inventory()
 sessions = Sessions()
-sessions.add_new_session(username, db)
+sessions.add_new_session(username, db, False)
 
 
 @app.route('/')
@@ -60,8 +60,11 @@ def login():
     """
     username = request.form['username']
     password = request.form['password']
+    manager = False
+    if(username == "admin"):
+        manager = True
     if login_pipeline(username, password):
-        sessions.add_new_session(username, db)
+        sessions.add_new_session(username, db, manager)
         return render_template('home.html', products=products, sessions=sessions)
     else:
         print(f"Incorrect username ({username}) or password ({password}).")
@@ -104,7 +107,7 @@ def register():
     last_name = request.form['last_name']
     salt, key = hash_password(password)
     update_passwords(username, key, salt)
-    db.insert_user(username, key, email, first_name, last_name)
+    db.insert_user(username, key, email, first_name, last_name, False)
     return render_template('index.html')
 
 

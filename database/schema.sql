@@ -13,7 +13,8 @@ CREATE TABLE users (
     password_hash VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL
+    last_name VARCHAR(255) NOT NULL,
+    admin INTEGER NOT NULL DEFAULT 0 -- 0 if not an admin, 1 if an admin
 );
 
 CREATE TABLE sales (
@@ -24,7 +25,7 @@ CREATE TABLE sales (
     quantity INTEGER NOT NULL,
     sale_date DATETIME NOT NULL,
     cost DECIMAL(10,2) NOT NULL,
+    table_number INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (username) REFERENCES users(username),
     FOREIGN KEY (item_id) REFERENCES inventory(id)
 );
-
