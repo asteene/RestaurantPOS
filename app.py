@@ -139,6 +139,25 @@ def checkout():
 
     return render_template('checkout.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
 
+# need to add a check to make sure the session is an admin session before people can access
+# most likely just modify the /home page for Managers to display the option
+# Otherwise, need to make sure it can't be accessed directly. Leaving it this way for testing atm
+@app.route('/sales')
+def sales_page():
+    """
+    Renders the sales page when the user is at the `/home` endpoint with a POST request.
+
+    args:
+        - None
+
+    returns:
+        - None
+
+    modifies:
+        - None
+    """
+    return render_template('sales.html')
+    
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)
