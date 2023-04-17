@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<body>
+<button class="tablink" onclick="getSalesReport('Daily', this, 'red')" id="defaultOpen">Daily</button>
+<button class="tablink" onclick="getSalesReport('Weekly', this, 'green')">Weekly</button>
+<button class="tablink" onclick="getSalesReport('Monthly', this, 'blue')">Monthly</button>
+</body>
+
+<div class="row">
+    <div class="col-md-12" id="index_buttons">
+        <a href="/home" class="btn btn-primary" id="orders_button">Order</a>
+        <a href="/" class="btn btn-primary" id="logout_button">Logout</a>
+    </div>
+</div>
+
+{% endblock %}
