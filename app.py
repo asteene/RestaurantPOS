@@ -12,7 +12,7 @@ username = 'default'
 db = Database('database/storeRecords.db')
 products = db.get_full_inventory()
 sessions = Sessions()
-sessions.add_new_session(username, db)
+sessions.add_new_session(username, db, False)
 ORDERS = {}
 
 
