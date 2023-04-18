@@ -268,7 +268,7 @@ class Database:
         admin_bit = 1 if admin else 0
 
         self.cursor.execute(
-            "INSERT INTO users (username, password_hash, email, first_name, last_name, admin_bit) VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO users (username, password_hash, email, first_name, last_name, admin) VALUES (?, ?, ?, ?, ?, ?)",
             (username, password_hash, email, first_name, last_name, admin_bit))
         self.connection.commit()
 
