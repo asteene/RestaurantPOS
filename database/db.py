@@ -269,7 +269,7 @@ class Database:
 
         self.cursor.execute(
             "INSERT INTO users (username, password_hash, email, first_name, last_name, admin_bit) VALUES (?, ?, ?, ?, ?, ?)",
-            (username, password_hash, email, first_name, last_name))
+            (username, password_hash, email, first_name, last_name, admin_bit))
         self.connection.commit()
 
     # ------ Getter methods ------
