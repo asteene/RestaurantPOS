@@ -129,7 +129,7 @@ class Sessions:
     def __init__(self):
         self.sessions = {}
 
-    def add_new_session(self, username: str, db: Database, manager: bool) -> None:
+    def add_new_session(self, username: str, db: Database, manager = False) -> None:
         """
         Adds a new user session to the collection of sessions.
 
