@@ -158,7 +158,23 @@ def sales_page():
         - None
     """
     return render_template('sales.html')
-    
+
+
+@app.route('/time')
+def time_page():
+    """
+    Renders the sales page when the user is at the `/home` endpoint with a POST request.
+
+    args:
+        - None
+
+    returns:
+        - None
+
+    modifies:
+        - None
+    """
+    return render_template('time.html')    
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)
