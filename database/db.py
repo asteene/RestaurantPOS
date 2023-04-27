@@ -648,7 +648,6 @@ class Database:
             - table: The location of the sale.
         """
         sql = """SELECT * FROM sales WHERE table_number = '%s'""" % (table)
-        ##tbl = (table,)
         self.cursor.execute(sql)
         return self.cursor.fetchall()
 
