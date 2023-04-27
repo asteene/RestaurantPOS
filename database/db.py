@@ -647,9 +647,9 @@ class Database:
         args:
             - table: The location of the sale.
         """
-        self.cursor.execute(
-            "SELECT * FROM sales WHERE table_number = ?", (table)
-        )
+        sql = """SELECT * FROM sales WHERE table_number = '%s'""" % (table)
+        ##tbl = (table,)
+        self.cursor.execute(sql)
         return self.cursor.fetchall()
 
     # ------ Setter methods ------

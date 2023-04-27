@@ -43,7 +43,8 @@ def run_tests(test_type: str, test_funcs: list, report_file_path: str) -> int:
     failed_tests = 0
     with open(report_file_path, "a") as report_file:
         for test in test_funcs:
-            result, error = test()
+            result = test()
+            error = test()
             if not result:
                 report_file.write(f"{error}\n")
                 failed_tests += 1

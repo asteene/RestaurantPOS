@@ -2,6 +2,6 @@
 if [ -f storeRecords.db ]; then
     echo "Database exists. Deleting..."
     rm -rf storeRecords.db
-fi
+fi;
 sqlite3 storeRecords.db < schema.sql
 sqlite3 storeRecords.db < startingData.sql
