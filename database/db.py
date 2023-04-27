@@ -640,7 +640,7 @@ class Database:
             "SELECT * FROM sales WHERE cost BETWEEN ? AND ?", (start_cost, end_cost))
         return self.cursor.fetchall()
     
-    def get_sales_by_location(self, table_number: int) -> tuple:
+    def get_sales_by_location(self, table: int) -> tuple:
         """
         Gets the sales at a certain location from the databse.
 
@@ -648,7 +648,7 @@ class Database:
             - table: The location of the sale.
         """
         self.cursor.execute(
-            "SELECT * FROM sales WHERE table_number = ?", (table_number)
+            "SELECT * FROM sales WHERE table_number = ?", (table)
         )
         return self.cursor.fetchall()
 
