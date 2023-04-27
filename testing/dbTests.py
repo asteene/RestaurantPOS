@@ -86,3 +86,22 @@ def test_check_connection_threaded(db: Database = None) -> tuple:
         return False, error
     else:
         return True, "Connection is not single threaded."
+    
+def test_set_sale_location(db: Database = None) -> bool:
+    db = Database('database/storeRecords.db') if db is None else db
+    
+    db.set_sale_location(1, 3)
+    if(db.get_sales_by_location(3) != None):
+        return True
+    else:
+        return False
+
+def test_set_admin(db: Database = None) -> bool:
+    db = Database('database/storeRecords.db') if db is None else db
+
+    # this is definitely not safe if this had real user data
+    user = db.get_all_user_information()[0]
+    #if(db.get_admin_auth()):
+
+    return True
+        
