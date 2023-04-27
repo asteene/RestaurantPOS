@@ -640,7 +640,7 @@ class Database:
             "SELECT * FROM sales WHERE cost BETWEEN ? AND ?", (start_cost, end_cost))
         return self.cursor.fetchall()
     
-    def get_sales_by_location(self, table: int) -> tuple:
+    def get_sales_by_location(self, table_number: int) -> tuple:
         """
         Gets the sales at a certain location from the databse.
 
@@ -648,7 +648,7 @@ class Database:
             - table: The location of the sale.
         """
         self.cursor.execute(
-            "SELECT * FROM sales WHERE table = ?", (table)
+            "SELECT * FROM sales WHERE table_number = ?", (table_number)
         )
         return self.cursor.fetchall()
 
@@ -662,7 +662,7 @@ class Database:
             - sale_id: The id of the sale to update.
             - new_location: The new location of the sale.
         '''
-        self.cursor.execute('UPDATE sales SET table_number = ? WHERE id = ?', (new_location, sale_id))
+        self.cursor.execute('UPDATE sales SET table_number = ? WHERE sale_id = ?', (new_location, sale_id))
 
     def set_sale_transaction_id(self, sale_id: int, new_transaction_id: int):
         """

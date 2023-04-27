@@ -87,7 +87,9 @@ def test_check_connection_threaded(db: Database = None) -> tuple:
     else:
         return True, "Connection is not single threaded."
     
-def test_set_sale_location(db: Database) -> None:
+def test_set_sale_location(db: Database = None) -> None:
+    db = Database('database/storeRecords.db') if db is None else db
+    
     db.set_sale_location(1, 3)
     if(db.get_sales_by_location(3) != None):
         return True
