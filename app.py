@@ -146,7 +146,7 @@ def checkout():
 @app.route('/sales')
 def sales_page():
     """
-    Renders the sales page when the user is at the `/home` endpoint with a POST request.
+    Renders the sales page when the user is at the `/sales` endpoint.
 
     args:
         - None
@@ -163,7 +163,7 @@ def sales_page():
 @app.route('/time')
 def time_page():
     """
-    Renders the sales page when the user is at the `/home` endpoint with a POST request.
+    Renders the time page when the user is at the `/time` endpoint.
 
     args:
         - None
@@ -179,7 +179,7 @@ def time_page():
 @app.route('/orders')
 def orders_page():
     """
-    Renders the sales page when the user is at the `/home` endpoint with a POST request.
+    Renders the orders page when the user is at the `/orders` endpoint.
 
     args:
         - None
