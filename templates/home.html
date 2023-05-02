@@ -1,10 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="row">
+    <div class="col-md-12" id="home_buttons">
+        <a href="/time" class="btn btn-primary" id="clock_in_out_button">Clock In/Out</a>
+        <a href="/sales" class="btn btn-primary" id="sales_button">Sales Report</a>
+        <a href="/orders" class="btn btn-primary" id="orders_button">Current Orders</a>
+        <a href="/" class="btn btn-primary" id="logout_button">Logout</a>
+    </div>
+</div>
 
 <div class="row" id="products_page">
     <div class="col-md-12">
-        <h3>Products</h3>
+        <h3>Pizza</h3>
         <hr>
         <div class="row">
             <form action="/checkout" method="post">
@@ -24,6 +32,10 @@
                             </div>
                         </div>
                         {% endfor %}
+                        <h3>
+                        Table Number
+                        <input type="number" class="table" id="table" name="table">
+                        </h3>
                     </div>
                 </div>
                 <div class="row">

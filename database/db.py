@@ -250,7 +250,7 @@ class Database:
     # ------------------ Users -------------------
     # --------------------------------------------
 
-    def insert_user(self, username: str, password_hash: str, email: str, first_name: str, last_name: str) -> None:
+    def insert_user(self, username: str, password_hash: str, email: str, first_name: str, last_name: str, admin: bool) -> None:
         """
         Inserts a new user into the database.
 
@@ -258,16 +258,31 @@ class Database:
             - username: The username of the user to insert.
             - password_hash: The password_hash of the user to insert.
             - email: The email of the user to insert.
+            - admin: The status of the User account as admin or not.
 
         returns:
             - None
         """
+
+        # convert admin to 0 or 1 to match database
+        admin_bit = 1 if admin else 0
+
         self.cursor.execute(
-            "INSERT INTO users (username, password_hash, email, first_name, last_name) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO users (username, password_hash, email, first_name, last_name, admin_bit) VALUES (?, ?, ?, ?, ?, ?)",
             (username, password_hash, email, first_name, last_name))
         self.connection.commit()
 
     # ------ Getter methods ------
+
+    def get_admin_auth(self, username: str) -> bool:
+        """
+        Gets the admin status of the User.
+
+        args:
+            - None
+        """
+        self.cursor.execute("SELECT * FROM users WHERE username = ?", (username))
+        return True if self.cursor.fetchone() == 1 else False
 
     def get_all_user_information(self):
         """
@@ -404,7 +419,7 @@ class Database:
     # ------------------ Sales -------------------
     # --------------------------------------------
 
-    def insert_new_sale(self, transaction_id: int, username: str, item_id: int, quantity: int, sale_date: dt.date, cost: float):
+    def insert_new_sale(self, transaction_id: int, username: str, item_id: int, quantity: int, sale_date: dt.date, cost: float, table: int):
         """
         Inserts a new sale into the database.
 
@@ -415,12 +430,13 @@ class Database:
             - quantity: The quantity of the sale.
             - sale_date: The sale date of the sale.
             - cost: The cost of the sale.
+            - table: The location of the sale.
 
         returns:
             - None
         """
         self.cursor.execute(
-            "INSERT INTO sales (transaction_id, username, item_id, quantity, sale_date, cost) VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO sales (transaction_id, username, item_id, quantity, sale_date, cost, table) VALUES (?, ?, ?, ?, ?, ?, ?)",
             (transaction_id, username, item_id, quantity, sale_date, cost))
         self.connection.commit()
 
@@ -623,8 +639,30 @@ class Database:
         self.cursor.execute(
             "SELECT * FROM sales WHERE cost BETWEEN ? AND ?", (start_cost, end_cost))
         return self.cursor.fetchall()
+    
+    def get_sales_by_location(self, table: int) -> tuple:
+        """
+        Gets the sales at a certain location from the databse.
+
+        args:
+            - table: The location of the sale.
+        """
+        self.cursor.execute(
+            "SELECT * FROM sales WHERE table = ?", (table)
+        )
+        return self.cursor.fetchall()
 
     # ------ Setter methods ------
+
+    def set_sale_location(self, sale_id: int, new_location: int) -> None:
+        '''
+        Updates the transaction location of the sale in the the database.
+
+        args:
+            - sale_id: The id of the sale to update.
+            - new_location: The new location of the sale.
+        '''
+        self.cursor.execute('UPDATE sales SET table_number = ? WHERE id = ?', (new_location, sale_id))
 
     def set_sale_transaction_id(self, sale_id: int, new_transaction_id: int):
         """

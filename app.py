@@ -12,7 +12,7 @@ username = 'default'
 db = Database('database/storeRecords.db')
 products = db.get_full_inventory()
 sessions = Sessions()
-sessions.add_new_session(username, db)
+sessions.add_new_session(username, db, False)
 
 
 @app.route('/')
@@ -60,8 +60,11 @@ def login():
     """
     username = request.form['username']
     password = request.form['password']
+    manager = False
+    if(username == "admin"):
+        manager = True
     if login_pipeline(username, password):
-        sessions.add_new_session(username, db)
+        sessions.add_new_session(username, db, manager)
         return render_template('home.html', products=products, sessions=sessions)
     else:
         print(f"Incorrect username ({username}) or password ({password}).")
@@ -104,7 +107,7 @@ def register():
     last_name = request.form['last_name']
     salt, key = hash_password(password)
     update_passwords(username, key, salt)
-    db.insert_user(username, key, email, first_name, last_name)
+    db.insert_user(username, key, email, first_name, last_name, False)
     return render_template('index.html')
 
 
@@ -129,6 +132,7 @@ def checkout():
         if request.form[str(item['id'])] > '0':
             count = request.form[str(item['id'])]
             order[item['item_name']] = count
+            table = request.form['table']
             user_session.add_new_item(
                 item['id'], item['item_name'], item['price'], count)
 
@@ -136,6 +140,57 @@ def checkout():
 
     return render_template('checkout.html', order=order, sessions=sessions, total_cost=user_session.total_cost)
 
+# need to add a check to make sure the session is an admin session before people can access
+# most likely just modify the /home page for Managers to display the option
+# Otherwise, need to make sure it can't be accessed directly. Leaving it this way for testing atm
+@app.route('/sales')
+def sales_page():
+    """
+    Renders the sales page when the user is at the `/sales` endpoint.
+
+    args:
+        - None
+
+    returns:
+        - None
+
+    modifies:
+        - None
+    """
+    return render_template('sales.html')
+
+
+@app.route('/time')
+def time_page():
+    """
+    Renders the time page when the user is at the `/time` endpoint.
+
+    args:
+        - None
+
+    returns:
+        - None
+
+    modifies:
+        - None
+    """
+    return render_template('time.html')
+
+@app.route('/orders')
+def orders_page():
+    """
+    Renders the orders page when the user is at the `/orders` endpoint.
+
+    args:
+        - None
+
+    returns:
+        - None
+
+    modifies:
+        - None
+    """
+    return render_template('orders.html')       
 
 if __name__ == '__main__':
     app.run(debug=True, host=HOST, port=PORT)
