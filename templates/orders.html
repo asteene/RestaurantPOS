@@ -1,49 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box}
-
-/* This will need to be broken up into a standard js script, and css style sheet later */
-/* Set height of body and the document to 100% to enable "full page tabs" */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial;
-}
-
-/* Style tab links */
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
-}
-
-.tablink:hover {
-  background-color: #777;
-}
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: black;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
-}
-
-#Table 1 {background-color: red;}
-#Table 2 {background-color: green;}
-#Table 3 {background-color: blue;}
-#Table 4 {background-color: orange;}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mama Mia Pizzaria</title>
+    <link rel="stylesheet" href="/static/css/style2.css">
 </head>
+
 <body>
 <button class="tablink" onclick="openTable('Table 1', this, 'red')" id="defaultOpen">Table 1</button>
 <button class="tablink" onclick="openTable('Table 2', this, 'green')">Table 2</button>
@@ -61,12 +24,12 @@ body, html {
 </div>
 
 <div id="Table 3" class="tabcontent">
-    <h3>Table 2</h3>
+    <h3>Table 3</h3>
     <p>Current order:</p>
 </div>
 
 <div id="Table 4" class="tabcontent">
-    <h3>Table 2</h3>
+    <h3>Table 4</h3>
     <p>Current order:</p>
 </div>
 </body>
@@ -86,6 +49,6 @@ body, html {
       elmnt.style.backgroundColor = color;
     }
     
-    // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
 </script>
+
