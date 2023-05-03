@@ -2,9 +2,48 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mama Mia Pizzaria</title>
-    <link rel="stylesheet" href="/static/css/style2.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* style for orders.html content */
+  * {box-sizing: border-box}
+  
+  /* sets up full-page tabs */
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  
+  .tablink {
+    background-color: #c39797;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+  }
+  
+  .tablink:hover {
+    background-color: #b39595;
+  }
+  
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color: black;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+  }
+  
+  #Table\ 1 {background-color: rgb(197, 78, 78);}
+  #Table\ 2 {background-color: rgb(89, 151, 89);}
+  #Table\ 3 {background-color: rgb(95, 95, 200);}
+  #Table\ 4 {background-color: rgb(238, 194, 112);}
+</style>
 </head>
 
 <body>
@@ -33,22 +72,30 @@
     <p>Current order:</p>
 </div>
 </body>
-
+/* Referenced W2 school > https://www.w3schools.com/howto/howto_js_full_page_tabs.asp*/
 <script>
     function openTable(pageName,elmnt,color) {
+      // sets up variables needed for the function
       var i, tabcontent, tablinks;
+
+      // access all tabcontent and makes sure it is hidden
       tabcontent = document.getElementsByClassName("tabcontent");
       for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
       }
+
+      // removes color of all tablinks
       tablinks = document.getElementsByClassName("tablink");
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].style.backgroundColor = "";
       }
+
+      // displays the desired tabcontent using the passed in color
       document.getElementById(pageName).style.display = "block";
       elmnt.style.backgroundColor = color;
     }
     
+    // Opens table 1 by default
     document.getElementById("defaultOpen").click();
 </script>
 

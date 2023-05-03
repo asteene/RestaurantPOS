@@ -8,8 +8,13 @@ Fill the document out following the guidelines listed in each section. Maintain 
 
 * [Alec](mmailto:asteene@uncc.edu)
 * [Jack](mmailto:jdougl39@uncc.edu)
+<<<<<<< HEAD
+* [Nick](mmailto:nmatherl@uncc.edu)
+* [Mansoor](mmailto:mmoham18@uncc.edu)
+=======
 * [Name](mmailto:email@uncc.edu)
 * [Name](mmailto:email@uncc.edu)
+>>>>>>> origin/main
 
 ## Revisions
 
